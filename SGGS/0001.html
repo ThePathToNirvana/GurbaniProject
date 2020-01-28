@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Page Title</title>
+<link rel="stylesheet" href="../Scripture_CSS/SGGS_CSS.css">
+<link rel="stylesheet" href="../Scripture_CSS/styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+</style>
+</head>
+<body>
+
+<div class="topMenu" id="topMenu">
+  <a href="../home.html" class="active" id="Menu1">Home</a>
+  <a href="../about.html" class="active" id="Menu2">About</a>
+  <a href="../SGGS/0001.html" class="active" id="Menu3">Guru Granth Sahib</a>
+  <a href="../SDGS/0001.html" class="active" id="Menu4">Dasam Granth</a>
+  <a href="../SSGS/0001.html" class="active" id="Menu5">Sarbloh Granth</a>
+  <a href="javascript:void(0);" class="icon" id="icon" onclick="toggleOptions()">
+    <i class="fa">&#xf013;</i>
+  </a>
+  <a href="javascript:void(0);" class="optionIcon" id="optionIcon" onclick="toggleMenu()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+
+<div id="mainMenu">
+  <a href="#home" class="active" id="Menu6">About</a>
+  <a href="#home" class="active" id="Menu7">Guru Granth Sahib</a>
+  <a href="#home" class="active" id="Menu8">Dasam Granth</a>
+  <a href="#home" class="active" id="Menu9">Sarbloh Granth</a>
+</div>
+
+
+<div id="optionsMenu">
+  <h3>Display Options:</h3>  
+  <label class="optionsContainer">Larivaar assistance
+    <input id="myLarivaar" onclick="toggleReadingMode()" type="checkbox">
+    <span class="optionsCheckmark"></span>
+  </label>
+  <label class="optionsContainer">Nightmode
+    <input id="dark_light" onclick="toggleDarkLight()" type="checkbox">
+    <span class="optionsCheckmark"></span>
+  </label>
+  <label class="optionsContainer">Reading mode
+    <input type="checkbox" id="readingMode1" onclick="toggleReadingMode()">
+    <span class="optionsCheckmark"></span>
+  </label>
+  <br/>
+  <button class="optionsButton" type="button" id="verse1" onclick="myIncreaseFnVerse()">+</button>
+  <a style="font-size:22px;padding:45px;">Verse font size</a>
+  <button class="optionsButton" type="button" id="verse1" onclick="myDecreaseFnVerse()">-</button>
+  <br/><br/>
+  <button class="optionsButton" type="button" id="verse1" onclick="myIncreaseFnTrans()">+</button>
+  <a style="font-size:22px;padding:20px;">Translation font size</a>
+  <button class="optionsButton" type="button" id="verse1" onclick="myDecreaseFnTrans()">-</button>
+  <br/><br/>
+  <h3>Display available translations when the checkboxes are checked:</h3>
+  <h2 class="TransErrorMessage">Translations are currently not available</h2>
+  <label class="optionsContainer">English
+    <input id="myEng" onclick="toggleReadingMode()" type="checkbox">
+    <span class="optionsCheckmark"></span>
+  </label>
+  <label class="optionsContainer">Punjabi
+    <input id="myPun" onclick="toggleReadingMode()" type="checkbox">
+    <span class="optionsCheckmark"></span>
+  </label>
+</div>
+
+<div class="divAngHeader" id="divGoldBG1">
+  <div>
+    <h1 id="titleScriptureAngNo" style="color:white;text-align:center;"></h1>
+  </div>
+  <div class="buttonWrap">
+    <div></div>
+    <button id="PreviousAngBtn" class="hideButtonMobile" onclick="angBack()">« Previous Ang</button>
+    <div></div>
+    <input class="AngNoBox" type="number" id="AngNo" min="1" max="1430">
+    <button id="AngBtn" onclick="angSearch()">Go to Ang</button>
+    <div></div>
+    <button id="NextAngBtn" onclick="angForw()" class="hideButtonMobile">Next Ang »</button>
+    <div></div>
+  </div>
+  <div>
+  <h2 class="AngErrorMessage" id="demo1"></h2>
+  </div>
+</div>
+
+<div class="divMain">
+  <div id="divGoldBG2">
+  </div>
+  <div id="divColourBG"> 
+    <div class="divBorderBG" id="divBorderBG">
+      <div class="divWhiteBG" id="divWhiteBG">
+        <div style="word-break: break-all;"><p id="verses"></p></div>
+      </div>
+    </div>
+  </div>
+  <div id="divGoldBG3">
+  </div>
+</div>
+
+<div class="mainDivFooter" id="divGoldBG4">
+</div>
+<div class="footerDiv" id="footerDiv">
+  <div class="footerSMTitle">
+    <a style="float:right">Social Media</a>
+  </div>
+  
+  <div style="width:100%,height:35px;">
+    <a href="https://www.facebook.com/GurbaniProject/" target="_blank">
+    <div class="socialMediaDiv">
+      <img class="imgGrey imgColour brightnessFB" src="https://4.bp.blogspot.com/-832hUL2ygxM/WxgwWvKoAaI/AAAAAAAAAGE/pQQ3KZCeFSU3aLuFWjayE90hax-miiPMgCLcBGAs/s1600/Facebook.png">
+    </div>
+    </a>
+
+    <a href="https://www.twitter.com/GurbaniProject" target="_blank">
+    <div class="socialMediaDiv">
+      <img class="imgGrey imgColour" src="https://3.bp.blogspot.com/-nkvXO-Gv70I/WxgwXhlfhFI/AAAAAAAAAGQ/wMg83uG43LoKjb4VjvQxTm8AA_8a6OOCgCLcBGAs/s1600/Twitter.png">
+    </div>
+    </a>
+  </div>
+  <a style="float:left;padding:20px 0px 0px 0px;">Gurbani Project</a>
+
+</div>
+
+<script>
+
+arrayOfVerses = [
+  "ੴ ਸਤਿ ਨਾਮੁ ਕਰਤਾ ਪੁਰਖੁ ਨਿਰਭਉ ਨਿਰਵੈਰੁ ਅਕਾਲ ਮੂਰਤਿ ਅਜੂਨੀ ਸੈਭੰ ਗੁਰ ਪ੍ਰਸਾਦਿ ॥", 
+  "॥ ਜਪੁ ॥",
+  "ਆਦਿ ਸਚੁ ਜੁਗਾਦਿ ਸਚੁ ॥",
+  "ਹੈ ਭੀ ਸਚੁ ਨਾਨਕ ਹੋਸੀ ਭੀ ਸਚੁ ॥ ੧ ॥",
+  "ਸੋਚੈ ਸੋਚਿ ਨ ਹੋਵਈ ਜੇ ਸੋਚੀ ਲਖ ਵਾਰ ॥",
+  "ਚੁਪੈ ਚੁਪ ਨ ਹੋਵਈ ਜੇ ਲਾਇ ਰਹਾ ਲਿਵ ਤਾਰ ॥",
+  "ਭੁਖਿਆ ਭੁਖ ਨ ਉਤਰੀ ਜੇ ਬੰਨਾ ਪੁਰੀਆ ਭਾਰ ॥",
+  "ਸਹਸ ਸਿਆਣਪਾ ਲਖ ਹੋਹਿ ਤ ਇਕ ਨ ਚਲੈ ਨਾਲਿ ॥",
+  "ਕਿਵ ਸਚਿਆਰਾ ਹੋਈਐ ਕਿਵ ਕੂੜੈ ਤੁਟੈ ਪਾਲਿ ॥",
+  "ਹੁਕਮਿ ਰਜਾਈ ਚਲਣਾ ਨਾਨਕ ਲਿਖਿਆ ਨਾਲਿ ॥ ੧ ॥",
+  "ਹੁਕਮੀ ਹੋਵਨਿ ਆਕਾਰ ਹੁਕਮੁ ਨ ਕਹਿਆ ਜਾਈ ॥",
+  "ਹੁਕਮੀ ਹੋਵਨਿ ਜੀਅ ਹੁਕਮਿ ਮਿਲੈ ਵਡਿਆਈ ॥",
+  "ਹੁਕਮੀ ਉਤਮੁ ਨੀਚੁ ਹੁਕਮਿ ਲਿਖਿ ਦੁਖ ਸੁਖ ਪਾਈਅਹਿ ॥",
+  "ਇਕਨਾ ਹੁਕਮੀ ਬਖਸੀਸ ਇਕਿ ਹੁਕਮੀ ਸਦਾ ਭਵਾਈਅਹਿ ॥",
+  "ਹੁਕਮੈ ਅੰਦਰਿ ਸਭੁ ਕੋ ਬਾਹਰਿ ਹੁਕਮ ਨ ਕੋਇ ॥",
+  "ਨਾਨਕ ਹੁਕਮੈ ਜੇ ਬੁਝੈ ਤ ਹਉਮੈ ਕਹੈ ਨ ਕੋਇ ॥ ੨ ॥",
+  "ਗਾਵੈ ਕੋ ਤਾਣੁ ਹੋਵੈ ਕਿਸੈ ਤਾਣੁ ॥",
+  "ਗਾਵੈ ਕੋ ਦਾਤਿ ਜਾਣੈ ਨੀਸਾਣੁ ॥",
+  "ਗਾਵੈ ਕੋ ਗੁਣ ਵਡਿਆਈਆ ਚਾਰ ॥",
+  "ਗਾਵੈ ਕੋ ਵਿਦਿਆ ਵਿਖਮੁ ਵੀਚਾਰੁ ॥",
+  "ਗਾਵੈ ਕੋ ਸਾਜਿ ਕਰੇ ਤਨੁ ਖੇਹ ॥",
+  "ਗਾਵੈ ਕੋ ਜੀਅ ਲੈ ਫਿਰਿ ਦੇਹ ॥",
+  "ਗਾਵੈ ਕੋ ਜਾਪੈ ਦਿਸੈ ਦੂਰਿ ॥"]
+
+Eng = ["Eng1 cc", "Eng2", "Eng3", "Eng4", "Eng5", "Eng6", "Eng7", "Eng8","Eng9", "Eng10", "Eng11", "Eng12", "Eng13", "Eng14", "Eng15", "Eng16","Eng17", "Eng18", "Eng19", "Eng20", "Eng21", "Eng22", "Eng23"]
+
+Pun = ["Pun1", "Pun21", "Pun33", "Pun4", "Pun1", "Pun21", "Pun33", "Pun4","Pun1", "Pun21", "Pun33", "Pun4","Pun1", "Pun21", "Pun33", "Pun4","Pun1", "Pun21", "Pun33", "Pun4","Pun33", "Pun4", "Pun23"]
+
+
+</script>
+<script src="../Scripture_JS/SGGS_JS.js"></script>
+<script src="../Scripture_JS/script.js"></script>
+</body>
+</html>

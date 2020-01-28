@@ -1,0 +1,459 @@
+body {
+  margin: 0;
+}
+
+::-moz-selection { /* Code for Firefox */
+  background: var(--main-bg-colour);
+  color: var(--text-highlight-text-colour);
+}
+
+
+::selection {
+  background: var(--main-bg-colour);
+  color: var(--text-highlight-text-colour);
+}
+
+.divAngHeader {
+  padding:20px;
+  background-color: #edb910;
+  background-image: linear-gradient(#FFD700, #edb910); 
+}
+
+.divMain {
+  display:grid;
+  grid-template-columns: 1fr 14fr 1fr;
+}
+
+.divMain > div {
+  background-color: var(--backup-bg-colour);
+  background-image: linear-gradient(to bottom right, var(--main-bg-colour), var(--second-bg-colour)); /* Standard syntax (must be last) */
+}
+
+.divMain > div:nth-child(1) {
+  background-color: #edb910;
+  background-image: linear-gradient(#FFD700, #edb910); 
+}
+
+.divMain > div:nth-child(3) {
+  background-color: #edb910;
+  background-image: linear-gradient(#edb910, #DAA520); 
+}
+
+.divBorderBG {
+  width: calc(100% - 60px);
+  height: calc(100% - 60px);
+  border: 30px solid transparent;
+  -webkit-border-image: url(https://1.bp.blogspot.com/-ruYBMvZBfv4/Xil0uy0x9LI/AAAAAAAAAJA/ED8-Sq892pAQpMXfge3BO7Vo8Bca9CvowCLcBGAsYHQ/s1600/GurbaniProjectBackground2.png) 300 stretch; /* Safari 3.1-5 */
+  -o-border-image: url(https://1.bp.blogspot.com/-ruYBMvZBfv4/Xil0uy0x9LI/AAAAAAAAAJA/ED8-Sq892pAQpMXfge3BO7Vo8Bca9CvowCLcBGAsYHQ/s1600/GurbaniProjectBackground2.png) 300 stretch; /* Opera 11-12.1 */
+  border-image: url(https://1.bp.blogspot.com/-ruYBMvZBfv4/Xil0uy0x9LI/AAAAAAAAAJA/ED8-Sq892pAQpMXfge3BO7Vo8Bca9CvowCLcBGAsYHQ/s1600/GurbaniProjectBackground2.png) 300 stretch;
+  background-color: linear-gradient(to bottom right, var(--main-bg-colour), var(--second-bg-colour));
+}
+
+.divWhiteBG {
+  background-color:white;
+  margin:5%;
+  width: calc(80vw - 64px);
+}
+
+.buttonWrap {
+  display:grid;
+  grid-template-columns: 1fr 2fr 1fr 2fr 1fr 1fr 2fr 1fr;
+}
+
+.buttonWrap > button {
+  border-radius: 0px;
+  background-color: transparent;
+  border: 2px solid white;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 15px;
+  padding: 8px 20px;
+  margin: 0 0;
+  cursor: pointer;
+}
+
+.buttonWrap > button:hover {
+  border: 2px solid var(--main-bg-colour);
+  background-color: var(--main-bg-colour);
+}
+
+.buttonWrap > button:active {
+  border: 2px solid var(--second-bg-colour);
+  background-color: var(--second-bg-colour);
+  transition: 0s;
+}
+
+.buttonWrap > button:focus {
+  outline: none;
+}
+
+.topMenu {
+  overflow: hidden;
+  background-color: #6d6d6d;
+  background-image: linear-gradient(#575757, #6d6d6d); 
+  position: relative;
+}
+
+#optionsMenu {
+  display: none;
+  background-color: #dbdbdb;
+  background-image: linear-gradient(#ededed, #dbdbdb); 
+  padding: 25px;
+}
+
+#mainMenu {
+  display: none;
+}
+
+.topMenu a {
+  float: left;
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topMenu a.icon {
+  float: right;
+}
+
+.topMenu a.optionIcon {
+  float: right;
+  display: none;
+}
+
+.topMenu a:hover {
+  background-color: #dbdbdb;
+  background-image: linear-gradient(var(--main-bg-colour), var(--middle-bg-colour)); 
+  color: white;
+}
+
+.topMenu a:active {
+  background-color: #dbdbdb;
+  background-image: linear-gradient(var(--middle-bg-colour), var(--second-bg-colour)); 
+  color: lightgrey;
+}
+
+.active {
+  background-color: #6d6d6d;
+  background-image: linear-gradient(#575757, #6d6d6d); 
+  color: white;
+}
+
+/* The container */
+.optionsContainer {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.optionsContainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.optionsCheckmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: var(--second-bg-colour);
+}
+
+/* On mouse-over, add a grey background color */
+.optionsContainer:hover input ~ .optionsCheckmark {
+  background-color: var(--main-bg-colour);
+}
+
+/* When the checkbox is checked, add a blue background */
+.optionsContainer input:checked ~ .optionsCheckmark {
+  background-color: var(--main-bg-colour);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.optionsCheckmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.optionsContainer input:checked ~ .optionsCheckmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.optionsContainer .optionsCheckmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.optionsButton {
+  border: 0px solid var(--main-bg-colour);
+  color: var(--main-bg-colour);
+  background-color: transparent;
+  text-align: center;
+  font-size: 22px;
+  padding:10px 20px;
+  margin: 0 0;
+  cursor: pointer;
+}
+
+.optionsButton:hover {
+  background: var(--main-bg-colour);
+  color: white;
+}
+
+.optionsButton:active {
+  background: var(--second-bg-colour);
+  color: lightgrey;
+}
+
+.footerDiv {
+  background-color:grey;
+  padding:25px 25px 50px 25px;
+  color:white;
+}
+
+.footerSMTitle {
+  text-align:right;
+  padding:0px 65px 25px 0px;
+  font-size:20px;
+}
+.imgColour:hover {
+    -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(0%);
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.5); 
+}
+
+.brightnessFB:hover {
+filter: brightness(150%);
+}
+
+.brightnessInsta:hover {
+filter: brightness(125%);
+}
+
+.imgGrey {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+    width:25px;
+    height:25px;
+    transition: transform .2s;
+}
+
+.socialMediaDiv {
+	position:static;
+    width: 25px;
+    padding: 0px;
+    margin: 5px;
+    float: right;
+}
+
+.mainDivFooter {
+  padding: 2%;
+  background-color: #edb910;
+  background-image: linear-gradient(to bottom right, #edb910, #c79230); 
+}
+
+.AngNoBox {
+  font-size:24px;
+  outline-width: 0;
+}
+
+.tableOfVerses {
+  margin:0px;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  height:100%;
+}
+
+.tableOfVerses td, .tableOfVerses th {
+  border: 0px solid #ddd;
+  padding: 8px;
+}
+
+.tableOfVerses td:nth-child(1) {
+  text-align: center;
+}
+
+.tableOfVerses td div {
+  border: none;
+  padding: 5px 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.tableOfVersesBtn {
+  background-color: #bbb; /* Green */
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.tableOfVersesBtn:hover {background-color: #ccc;}
+.tableOfVersesBtn:active {background-color: #ddd;}
+.tableOfVerses tr:nth-child(even){background: rgba(0, 0, 0, 0.1);}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.pageBottomNextBtn {
+  right:10px;
+  background-color: transparent; /* var(--main-bg-colour) */
+  border: 1px solid var(--main-bg-colour);
+  color: var(--main-bg-colour);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.AngErrorMessage {
+  color: var(--main-bg-colour);
+  text-align:center;
+}
+
+.TransErrorMessage {
+  color: var(--main-bg-colour);
+  text-align:center;
+}
+
+.pageBottomNextBtn:hover {background-color: var(--main-bg-colour);color: white;border: 1px solid var(--main-bg-colour);}
+.pageBottomNextBtn:active {background-color: var(--second-bg-colour);color: white;border: 1px solid var(--second-bg-colour);}
+.pageBottomNextBtn:focus {outline: none;}
+
+@media (max-width: 650px) {
+  .divMain {
+    display:grid;
+    grid-template-columns: 0fr 1fr 0fr;
+  }
+  .buttonWrap {
+    display:grid;
+    grid-template-columns: 2fr 1fr;
+  }
+  .buttonWrap {
+    display:grid;
+    grid-template-columns: 0fr 2fr 0fr 2fr 1fr 0fr 2fr 0fr;
+  }
+  .topMenu a {
+    float: none;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+  }
+  .topMenu a {
+    display: none;
+  }
+  .topMenu a:nth-child(1) {
+    display: block;
+  }
+  .topMenu a.icon {
+    background-color: #6d6d6d;
+    background-image: linear-gradient(#575757, #6d6d6d); 
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topMenu a.optionIcon {
+    background-color: #6d6d6d;
+    background-image: linear-gradient(#575757, #6d6d6d); 
+    display: block;
+    position: absolute;
+    right: 47px;
+    top: 0;
+  }
+  .topMenu a:hover {
+    background-color: #dbdbdb;
+    background-image: linear-gradient(var(--main-bg-colour), var(--middle-bg-colour)); 
+    color: black;
+  }
+  #mainMenu {
+    display: none;
+  }
+  #mainMenu a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+  }
+  #mainMenu a:hover {
+    background-color: #dbdbdb;
+    background-image: linear-gradient(var(--main-bg-colour), var(--middle-bg-colour)); 
+    color: black;
+  }
+  .topMenu a:active {
+    background-color: #ffffff;
+    background-image: linear-gradient(var(--middle-bg-colour), var(--second-bg-colour)); 
+    color: black;
+  }
+  #mainMenu a:active {
+    background-color: #ffffff;
+    background-image: linear-gradient(var(--middle-bg-colour), var(--second-bg-colour)); 
+    color: black;
+  }
+  .divWhiteBG {
+    margin:2%;
+    width: calc(98vw - 68px);
+  }
+
+}
+
+@media (max-width: 500px) {
+  .buttonWrap {
+    display:grid;
+    grid-template-columns: 0fr 2fr 0fr 2fr 1fr 0fr 2fr 0fr;
+  }
+
+  .divWhiteBG {
+    width: calc(98vw - 66px);
+  }
+}
+
+@media (max-width: 337px) {
+  .buttonWrap {
+    text-align:center;
+    display:block;
+  }
+}

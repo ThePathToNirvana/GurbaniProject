@@ -1,0 +1,7 @@
+:root {
+  --backup-bg-colour: rgba(220, 40, 40);
+  --main-bg-colour: rgba(255, 0, 0);  
+  --second-bg-colour: rgba(178, 34, 34);
+  --middle-bg-colour: rgba(216, 17, 17);
+  --text-highlight-text-colour: white;
+}

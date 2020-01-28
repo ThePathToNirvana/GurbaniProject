@@ -1,0 +1,131 @@
+<div class="topMenu" id="topMenu">
+  <a href="../Scripture_CSS/styles.css" class="active" id="Menu1">Home</a>
+  <a href="#home" class="active" id="Menu2">About</a>
+  <a href="#home" class="active" id="Menu3">Guru Granth Sahib</a>
+  <a href="#home" class="active" id="Menu4">Dasam Granth</a>
+  <a href="#home" class="active" id="Menu5">Sarbloh Granth</a>
+  <a href="javascript:void(0);" class="icon" id="icon" onclick="toggleOptions()">
+    <i class="fa">&#xf013;</i>
+  </a>
+  <a href="javascript:void(0);" class="optionIcon" id="optionIcon" onclick="toggleMenu()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+
+<div id="mainMenu">
+  <a href="#home" class="active" id="Menu6">About</a>
+  <a href="#home" class="active" id="Menu7">Guru Granth Sahib</a>
+  <a href="#home" class="active" id="Menu8">Dasam Granth</a>
+  <a href="#home" class="active" id="Menu9">Sarbloh Granth</a>
+</div>
+
+
+<div id="optionsMenu">
+  <h3>Display Options:</h3>  
+  <label class="optionsContainer">Larivaar assistance
+    <input id="myLarivaar" onclick="toggleReadingMode()" type="checkbox">
+    <span class="optionsCheckmark"></span>
+  </label>
+  <label class="optionsContainer">Nightmode
+    <input id="dark_light" onclick="toggleDarkLight()" type="checkbox">
+    <span class="optionsCheckmark"></span>
+  </label>
+  <label class="optionsContainer">Reading mode
+    <input type="checkbox" id="readingMode1" onclick="toggleReadingMode()">
+    <span class="optionsCheckmark"></span>
+  </label>
+  <br/>
+  <button class="optionsButton" type="button" id="verse1" onclick="myIncreaseFnVerse()">+</button>
+  <a style="font-size:22px;padding:45px;">Verse font size</a>
+  <button class="optionsButton" type="button" id="verse1" onclick="myDecreaseFnVerse()">-</button>
+  <br/><br/>
+  <button class="optionsButton" type="button" id="verse1" onclick="myIncreaseFnTrans()">+</button>
+  <a style="font-size:22px;padding:20px;">Translation font size</a>
+  <button class="optionsButton" type="button" id="verse1" onclick="myDecreaseFnTrans()">-</button>
+  <br/><br/>
+  <h3>Display available translations when the checkboxes are checked:</h3>
+  <h2 class="TransErrorMessage">Translations are currently not available</h2>
+  <label class="optionsContainer">English
+    <input id="myEng" onclick="toggleReadingMode()" type="checkbox">
+    <span class="optionsCheckmark"></span>
+  </label>
+  <label class="optionsContainer">Punjabi
+    <input id="myPun" onclick="toggleReadingMode()" type="checkbox">
+    <span class="optionsCheckmark"></span>
+  </label>
+</div>
+
+<div class="divAngHeader" id="divGoldBG1">
+  <div>
+    <h1 id="titleScriptureAngNo" style="color:white;text-align:center;"></h1>
+  </div>
+  <div class="buttonWrap">
+    <div></div>
+    <button id="PreviousAngBtn" class="hideButtonMobile" onclick="angBack()">« Previous Ang</button>
+    <div></div>
+    <input class="AngNoBox" type="number" id="AngNo" min="1" max="1430">
+    <button id="AngBtn" onclick="angSearch()">Go to Ang</button>
+    <div></div>
+    <button id="NextAngBtn" onclick="angForw()" class="hideButtonMobile">Next Ang »</button>
+    <div></div>
+  </div>
+  <div>
+  <h2 class="AngErrorMessage" id="demo1"></h2>
+  </div>
+</div>
+
+<div class="divMain">
+  <div id="divGoldBG2">
+  </div>
+  <div id="divColourBG"> 
+    <div class="divBorderBG" id="divBorderBG">
+      <div class="divWhiteBG" id="divWhiteBG">
+        <div style="word-break: break-all;"><p id="verses"></p></div>
+      </div>
+    </div>
+  </div>
+  <div id="divGoldBG3">
+  </div>
+</div>
+
+<div class="mainDivFooter" id="divGoldBG4">
+</div>
+<div class="footerDiv" id="footerDiv">
+  <div class="footerSMTitle">
+    <a style="float:right">Social Media</a>
+  </div>
+  
+  <div style="width:100%,height:35px;">
+    <a href="#" target="_blank">
+    <div class="socialMediaDiv">
+      <img class="imgGrey imgColour" src="https://2.bp.blogspot.com/-brPAA1H2J3s/WxgwemZYpQI/AAAAAAAAAGY/2n9SkEJRjZsZao8UWn9NAUqiVqiXMoknACLcBGAs/s1600/soundcloud-icon.png">
+    </div>
+    </a>
+
+    <a href="https://www.youtube.com" target="_blank">
+    <div class="socialMediaDiv">
+      <img class="imgGrey imgColour" src="https://3.bp.blogspot.com/-yZe0gw6b6m4/WxgwXy0B3vI/AAAAAAAAAGU/BP5w9mYoKyQUVAbHIKBPq81fGAgxkDPLgCLcBGAs/s1600/YouTube.png">
+    </div>
+    </a>
+
+    <a href="https://www.instagram.com/" target="_blank">
+    <div class="socialMediaDiv">
+      <img class="imgGrey imgColour brightnessInsta" src="https://4.bp.blogspot.com/-ykd-6aWFcCw/WxgwWhPgkVI/AAAAAAAAAGI/SD5B7220MiQebkLY2MrRn1mL1Au99PASwCLcBGAs/s1600/Instagram.png">
+    </div>
+    </a>
+
+    <a href="https://www.facebook.com/" target="_blank">
+    <div class="socialMediaDiv">
+      <img class="imgGrey imgColour brightnessFB" src="https://4.bp.blogspot.com/-832hUL2ygxM/WxgwWvKoAaI/AAAAAAAAAGE/pQQ3KZCeFSU3aLuFWjayE90hax-miiPMgCLcBGAs/s1600/Facebook.png">
+    </div>
+    </a>
+
+    <a href="https://www.twitter.com/" target="_blank">
+    <div class="socialMediaDiv">
+      <img class="imgGrey imgColour" src="https://3.bp.blogspot.com/-nkvXO-Gv70I/WxgwXhlfhFI/AAAAAAAAAGQ/wMg83uG43LoKjb4VjvQxTm8AA_8a6OOCgCLcBGAs/s1600/Twitter.png">
+    </div>
+    </a>
+  </div>
+  <a style="float:left;padding:20px 0px 0px 0px;">Gurbani Project</a>
+
+</div>
