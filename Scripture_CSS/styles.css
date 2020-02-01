@@ -293,7 +293,7 @@ filter: brightness(125%);
 
 .tableOfVerses td, .tableOfVerses th {
   border: 0px solid #ddd;
-  padding: 8px;
+  padding: 4px;
 }
 
 .tableOfVerses td:nth-child(1) {
@@ -323,7 +323,10 @@ filter: brightness(125%);
 .tableOfVersesBtn:hover {background-color: #ccc;}
 .tableOfVersesBtn:active {background-color: #ddd;}
 
-.evenDiv1 {background: rgba(0, 0, 0, 0.1);}
+.evenDiv1 {
+  background: rgba(0, 0, 0, 0.1);
+  padding:8px;
+}
 
 .unselectable {
     -webkit-touch-callout: none;
