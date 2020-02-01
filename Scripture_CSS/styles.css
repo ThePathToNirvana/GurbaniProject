@@ -322,7 +322,8 @@ filter: brightness(125%);
 
 .tableOfVersesBtn:hover {background-color: #ccc;}
 .tableOfVersesBtn:active {background-color: #ddd;}
-.tableOfVerses tr.even {background: rgba(0, 0, 0, 0.1);}
+
+.evenDiv1 {background: rgba(0, 0, 0, 0.1);}
 
 .unselectable {
     -webkit-touch-callout: none;
