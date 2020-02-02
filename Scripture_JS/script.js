@@ -239,7 +239,7 @@ function readingModeOff() {
   }
   tableStr += '<div style="position:absolute;left:-9999px;">';
   for (i=0; i < larivaarArray.length; i++) {
-    tableStr += '<a id="CopyInput' + i.toString() + '">' + AngNumb.toString() + ':' + i.toString() + ' - ' + larivaarArray[i];
+    tableStr += '<a id="CopyInput' + i.toString() + '">' + AngNumb.toString() + ':' + [i+1].toString() + ' - ' + larivaarArray[i];
     for (j=0; j < Lang.length; j++) {
       if (IsLangAvailable[j] == true) {
         if (document.getElementById("Lang"+j).checked == true) {
