@@ -79,34 +79,53 @@ function angSearch() {
   if (x <= lastAngNo && x >= 1) {
     var str = "" + x
     var pad = "0000"
-    var ans = pad.substring(0, pad.length - str.length) + str
-    var site1 = window.location.href;
-    var newSite = site1.substring(0, site1.length-9) + ans + ".html"
+    var finalStr = pad.substring(0, pad.length - str.length) + str
+    var currentSite = window.location.href;
+    var currentStr = currentSiteStrFinder(currentSite);
+    var newSite = currentSite.replace(currentStr, finalStr);
     window.open(newSite, "_self");
   } else {
-    document.getElementById("demo1").innerHTML = "Type a number between 1 and 1430";
+    document.getElementById("demo1").innerHTML = "Type a number between 1 and " + lastAngNo.toString();
   }
 }
 
 function angBack() {
-  var str = window.location.href;
-  var res = parseInt(str.charAt(str.length-9) + str.charAt(str.length-8) + str.charAt(str.length-7) + str.charAt(str.length-6));
-  var str1 = "" + (res - 1);
-  var pad = "0000"
-  var ans = pad.substring(0, pad.length - str1.length) + str1
-  var newSite = str.substring(0, str.length-9) + ans + ".html"
+  var currentSite = window.location.href;
+  let currentStr = currentSiteStrFinder(currentSite);
+  let finalNoNoZeros = parseInt(currentStr)-1;
+  let finalNumStrNoZeros = finalNoNoZeros.toString();
+  let zeros = '0000'
+  let finalStr = zeros.substring(0, zeros.length - finalNumStrNoZeros.length) + finalNumStrNoZeros;
+  
+  let newSite = currentSite.replace(currentStr, finalStr);
   window.open(newSite, "_self");
-
 }
 
 function angForw() {
-  var str = window.location.href;
-  var res = parseInt(str.charAt(str.length-9) + str.charAt(str.length-8) + str.charAt(str.length-7) + str.charAt(str.length-6));
-  var str1 = "" + (res + 1);
-  var pad = "0000"
-  var ans = pad.substring(0, pad.length - str1.length) + str1
-  var newSite = str.substring(0, str.length-9) + ans + ".html"
+  var currentSite = window.location.href;
+  let currentStr = currentSiteStrFinder(currentSite);
+  let finalNoNoZeros = parseInt(currentStr)+1;
+  let finalNumStrNoZeros = finalNoNoZeros.toString();
+  let zeros = '0000'
+  let finalStr = zeros.substring(0, zeros.length - finalNumStrNoZeros.length) + finalNumStrNoZeros;
+  
+  let newSite = currentSite.replace(currentStr, finalStr);
   window.open(newSite, "_self");
+}
+
+function currentSiteStrFinder(currentSite) {
+  let currentStr = ''
+  for (i=0;i<lastAngNo;i++) {
+    let iStr = [i+1].toString()
+    let zeros = '0000'
+    let final = zeros.substring(0, zeros.length - iStr.length) + iStr; 
+    var n = currentSite.search('/' + final + '.html');
+    if (n > 0) {
+      currentStr = final;
+      break;
+    }
+  }
+  return currentStr;
 }
 
 var input = document.getElementById("AngNo");
@@ -116,6 +135,7 @@ input.addEventListener("keyup", function(event) {
    document.getElementById("AngBtn").click();
   }
 });
+
 
 function larivaarFn() {
   if (document.getElementById("myLarivaar").checked == true){

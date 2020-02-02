@@ -6,6 +6,6 @@ let mainColourBG = 'rgba(40, 195, 40)';
 let secondColourBG = 'rgba(74, 118, 74)';
 let middleColourBG = 'rgba(57, 156, 57)';
 
-let backupColourBGDark = 'rgba(48, 27, 48)';
-let mainColourBGDark = 'rgba(40, 22, 40)';
-let secondColourBGDark = 'rgba(54, 11, 54)';
+let backupColourBGDark = 'rgba(42, 84, 42)';
+let mainColourBGDark = 'rgba(16, 77, 16)';
+let secondColourBGDark = 'rgba(29, 46, 29)';
