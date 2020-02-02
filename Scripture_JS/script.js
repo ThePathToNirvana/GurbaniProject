@@ -69,8 +69,9 @@ document.getElementById("titleScriptureAngNo").innerHTML = scriptureName + '<br/
 //function
 
 function AngNoCalculator() {
-  var str = window.location.href;
-  var AngNo = parseInt(currentSiteStrFinder(currentSite));
+  var currentSite = window.location.href;
+  let currentStr = currentSiteStrFinder(currentSite);
+  let AngNo = parseInt(currentStr);
   return AngNo;
 }
 
