@@ -70,7 +70,7 @@ document.getElementById("titleScriptureAngNo").innerHTML = scriptureName + '<br/
 
 function AngNoCalculator() {
   var str = window.location.href;
-  var AngNo = parseInt(str.charAt(str.length-9) + str.charAt(str.length-8) + str.charAt(str.length-7) + str.charAt(str.length-6));
+  var AngNo = parseInt(currentSiteStrFinder(currentSite));
   return AngNo;
 }
 
