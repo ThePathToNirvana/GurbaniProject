@@ -1,5 +1,5 @@
-let lastAngNo = 1430;
-let scriptureName = 'Shri Sarbloh Granth Sahib';
+let lastAngNo = 1024;
+let scriptureName = 'Shri Sarbloh Granth Sahib (Ang 1 to 31 currently available)';
 
 let backupColourBG = 'rgba(80, 160, 80)';
 let mainColourBG = 'rgba(40, 195, 40)';  

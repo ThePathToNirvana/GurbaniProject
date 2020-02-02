@@ -1,5 +1,5 @@
 let lastAngNo = 1430;
-let scriptureName = 'Sahib Shri Guru Granth Sahib Ji';
+let scriptureName = 'Shri Dasam Granth Sahib';
 
 let backupColourBG = 'rgba(40, 130, 220)';
 let mainColourBG = 'rgba(0, 128, 255)';  

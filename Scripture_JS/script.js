@@ -1,8 +1,41 @@
+//script file
 loadCB("myLarivaar");
-loadCB("myEng");
-loadCB("myPun");
 loadCB("readingMode1");
 loadCB("dark_light")
+
+
+let IsLangAvailable = [];
+
+for (i = 0; i < Lang.length; i++) {
+  if (arrayOfVerses.length == Lang[i].length) {
+    IsLangAvailable[i] = true;
+  } else {
+    IsLangAvailable[i] = false;
+  }
+}
+
+for (i = 0; i < Lang.length; i++) {
+  if (IsLangAvailable[i] == true) {
+    document.getElementById('LangCont'+i).style.display = 'block';
+  } else {
+    document.getElementById('LangCont'+i).style.display = 'none';
+  }
+}
+
+
+for (i=0;i<46;i++){
+  document.getElementById("LangName"+[i]).innerHTML = LangName[i];
+}
+
+for (i=0;i<46;i++){
+  loadCB('Lang'+[i]);
+}
+
+for (i = 0; i < Lang.IsLangAvailable; i++) {
+  if (IsLangAvailable[i] == true) {
+    loadCB("Lang"+i);
+  } 
+}
 
 let larivaarArray = [];
 let AngNumb = AngNoCalculator();
@@ -27,20 +60,13 @@ if (AngNumb == 1) {
   document.getElementById("PreviousAngBtn").style.display = "none";
 } else if (AngNumb == lastAngNo) {
   document.getElementById("NextAngBtn").style.display = "none";
-
 }
-
-
-PreviousAngBtn
 
 toggleDarkLight();
 toggleReadingMode();
-document.getElementById("titleScriptureAngNo").innerHTML = scriptureName + '<br/> Displaying: Ang ' + AngNumb.toString();
+document.getElementById("titleScriptureAngNo").innerHTML = scriptureName + '<br/> Displaying: Ang ' + AngNumb.toString() + ' of ' + lastAngNo;
 
-// functions
-
-
-
+//function
 
 function AngNoCalculator() {
   var str = window.location.href;
@@ -133,11 +159,19 @@ function LarivaarAssistColourless() {
   }
 }
 
-function toggleReadingMode() {
+//
+
+function toggleReadingMode(x) {
   saveCB("myLarivaar");
   saveCB("readingMode1");
-  saveCB("myEng");
-  saveCB("myPun");
+  for (i=0;i<46;i++){
+    saveCB('Lang'+[i]);
+  }
+  for (i = 0; i < Lang.IsLangAvailable; i++) {
+    if (IsLangAvailable[i] == true) {
+      saveCB("Lang"+i);
+    } 
+  }
   larivaarFn()
   if (document.getElementById("readingMode1").checked == true) {
     document.getElementById('verses').innerHTML = readingModeOn();
@@ -146,6 +180,7 @@ function toggleReadingMode() {
   }
 }
 
+
 function readingModeOn() {
   let tableStr = '<table class="tableOfVerses">';
   tableStr += '<tr><td><a style="font-size:' + fontVerseSize +'px;">';
@@ -153,21 +188,17 @@ function readingModeOn() {
     tableStr += larivaarArray[i];
   }
   tableStr += '</a></td></tr>';
-  if (document.getElementById("myEng").checked == true) {
-    tableStr += '<tr><td><a style="font-size:' + fontTransSize +'px;">';
-    for (i=0; i < larivaarArray.length-1; i++) {
-      tableStr += Eng[i] + '&nbsp';
+  for (i = 0; i < Lang.length; i++) {
+    if (IsLangAvailable[i] == true) {
+      if (document.getElementById("Lang"+i).checked == true) {
+        tableStr += '<tr><td><a style="font-size:' + fontTransSize +'px;">';
+        for (j=0; j < larivaarArray.length-1; j++) {
+          tableStr += Lang[i][j] + '&nbsp';
+        }
+        tableStr += Lang[i][larivaarArray.length-1];
+        tableStr += '</a></td></tr>';
+      }
     }
-    tableStr += Eng[larivaarArray.length-1];
-    tableStr += '</a></td></tr>';
-  }
-  if (document.getElementById("myPun").checked == true) {
-    tableStr += '<tr><td><a style="font-size:' + fontTransSize +'px;">';
-    for (i=0; i < larivaarArray.length-1; i++) {
-      tableStr += Pun[i] + '&nbsp';
-    }
-    tableStr += Pun[larivaarArray.length-1];
-    tableStr += '</a></td></tr>';
   }
   tableStr += '</table>';
   tableStr += '<div><button onclick="angForw()" class="pageBottomNextBtn">Next Ang »</button></div>'
@@ -175,30 +206,46 @@ function readingModeOn() {
 }
 
 function readingModeOff() {
-  let tableStr = '<table class="tableOfVerses">';
+  let tableStr = '';
   for (i=0; i < larivaarArray.length; i++) {
-    tableStr += '<tr>';
-    tableStr += '<td style="width:70px"><div class="unselectable">' + AngNumb.toString() + ':' + i.toString() +'</div><a class="unselectable"><br/>' + '<button class="tableOfVersesBtn" onclick=\'copyToClipboard("CopyInput' + i.toString() + '")\'>❐</button>' + '</a></td>';
-    tableStr += '<td><p style="font-size:' + fontVerseSize +'px;">' + larivaarArray[i] +'</p>';
-    if (document.getElementById("myEng").checked == true) {
-      tableStr += '<p style="font-size:' + fontTransSize +'px;">' + Eng[i] + '</p>';
+    tableStr += '<div><table class="tableOfVerses">';
+    if (i%2 == 1) {
+      trStr = '<tr class="evenDiv1">';
+    } else {
+      trStr = '<tr>';
     }
-    if (document.getElementById("myPun").checked == true) {
-      tableStr += '<p style="font-size:' + fontTransSize +'px;">' + Pun[i] + '</p>';
+    tableStr += trStr;
+    tableStr += '<td style="width:70px"><a class="unselectable">' + AngNumb.toString() + ':' + [i+1].toString() +'</a><a class="unselectable"><br/>' + '<button class="tableOfVersesBtn" onclick=\'copyToClipboard("CopyInput' + i.toString() + '")\'>❐</button>' + '</a></td>';
+    tableStr += '<td><p style="font-size:' + fontVerseSize +'px;">' + larivaarArray[i] +'</p></td></tr>';
+    for (j=0; j < Lang.length; j++) {
+      if (IsLangAvailable[j] == true) {
+        if (document.getElementById("Lang"+j).checked == true) {
+          tableStr += trStr + '<td><a class="unselectable"><img src="' + LangFlag[j] + '" width="30" height="20"></a>';
+          tableStr += '</td><td>';
+          tableStr += '<p style="font-size:' + fontTransSize +'px;">' + Lang[j][i] + '</p></td></tr>';
+        }
+      }
     }
-    tableStr += '</td>' + '</tr>';
+    tableStr += '</table></div>';
   }
   if (AngNumb != lastAngNo) {
-    tableStr += '<tr><td colspan="2"><button onclick="angForw()" class="pageBottomNextBtn">Next Ang »</button></td></tr>'
+    if (larivaarArray.length%2 == 1) {
+      trStr = '<div class="evenDiv1"><table><tr>';
+      tableStr += trStr + '<td colspan="2"><button onclick="angForw()" class="pageBottomNextBtn">Next Ang »</button></td></tr></table></div>';
+    } else {
+      trStr = '<div class="evenDiv1"><table><tr>';
+      tableStr += trStr + '<td colspan="2"><button onclick="angForw()" class="pageBottomNextBtn">Next Ang »</button></td></tr></table></div>';
+    }
   }
-  tableStr += '</table><div style="position:absolute;left:-9999px;">';
+  tableStr += '<div style="position:absolute;left:-9999px;">';
   for (i=0; i < larivaarArray.length; i++) {
     tableStr += '<a id="CopyInput' + i.toString() + '">' + AngNumb.toString() + ':' + i.toString() + ' - ' + larivaarArray[i];
-    if (document.getElementById("myEng").checked == true) {
-    tableStr += ' ' + Eng[i];
-    }
-    if (document.getElementById("myPun").checked == true) {
-    tableStr += ' ' + Pun[i];
+    for (j=0; j < Lang.length; j++) {
+      if (IsLangAvailable[j] == true) {
+        if (document.getElementById("Lang"+j).checked == true) {
+          tableStr += ' ' + Lang[j][i];
+        }
+      }
     }
     tableStr += '</a>';
   }
@@ -263,7 +310,7 @@ function loadCB(xval){
 }
 
 function toggleDarkLight() {
-  saveCB("dark_light")
+  saveCB("dark_light");
   var checkBC = document.getElementById("dark_light");
   if (checkBC.checked == true){
     document.getElementById("divColourBG").style.backgroundImage = "linear-gradient(" + mainColourBGDark + ", " + secondColourBGDark + ")";
@@ -319,6 +366,7 @@ function toggleDarkLight() {
   }
 }
 
+
 //template fuctions
 function toggleOptions() {
   var xTemp = document.getElementById("optionsMenu");
@@ -347,3 +395,4 @@ function myFunction(xTemp) {
 var xTemp = window.matchMedia("(max-width: 650px)")
 myFunction(xTemp) // Call listener function at run time
 xTemp.addListener(myFunction) // Attach listener function on state changes
+
